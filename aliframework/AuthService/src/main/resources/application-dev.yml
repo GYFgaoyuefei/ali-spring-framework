@@ -1,0 +1,52 @@
+custom:
+  app:
+    token:
+      timeout: 86400
+  nosql:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+    rabbitmq:
+      addresses: localhost:5672
+      port: 5672
+      username: mnet
+      password: mnet
+  db:
+    url: jdbc:mysql://localhost:3306/gitpreview?useUnicode=true&characterEncoding=UTF-8
+    username: mnet_business
+    password: mnet@123
+    driver-class-name: com.mysql.jdbc.Driver
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  db1:
+    url: jdbc:mysql://localhost:3306/gitpreview?useUnicode=true&characterEncoding=UTF-8
+    username: mnet_business
+    password: mnet@123
+    driver-class-name: com.mysql.jdbc.Driver
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  oauth:
+    ip: localhost:9710
+    clientId: test
+    clientSecret: 123456
+
+nacosserver:
+  ip: localhost
+  port: 8848
+
+sentinelserver:
+  ip: localhost
+  port: 8080
+
+logging:
+  level:
+    com.suoju.montnets.common.dao:  DEBUG
+
+token:
+  expire:
+    seconds: 86400
+
+swagger:
+  enable: true
+
+exclude:
+  check:
+    token:  /loginservice/**,/error/**,/images/**,/webjars/**,/**/doc.html,/**/swagger-resources,/v2/**

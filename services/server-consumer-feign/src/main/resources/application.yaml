@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: nacos-consumer-feign
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        port: 8720
+        dashboard: 127.0.0.1:8080
+  rabbitmq:
+    addresses: 192.168.5.1:5672
+    port: 5672
+    username: mnet
+    password: mnet
+    virtualHost: /
+    requestedHeartbeat: 7200
+
+server:
+  port: 9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  sentinel:
+    enabled: true

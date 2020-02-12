@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <dependencies>
-        <dependency>
-            <groupId>com.eseasky.core.starters</groupId>
-            <artifactId>feign-wrapper</artifactId>
-        </dependency>
-    </dependencies>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -16,13 +10,12 @@
     </parent>
 
     <groupId>com.eseasky.core</groupId>
-    <artifactId>aliframework-protocol</artifactId>
+    <artifactId>Common</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>aliframework-protocol</name>
-    <modules>
-        <module>server-provider-protocol</module>
-    </modules>
+
+    <name>Common</name>
+
     <properties>
         <!-- Environment Settings -->
         <java.version>1.8</java.version>
@@ -37,13 +30,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.eseasky.core.starters</groupId>
-                <artifactId>starters</artifactId>
-                <version>1.0.0.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
@@ -56,11 +42,6 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.eseasky.core</groupId>
-                <artifactId>server-provider-protocol</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -75,15 +56,22 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <!--skip deploy (this is just a test module) -->
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>eseasky</id>
-            <url>http://rep.eseasky.cn/repository/eseasky/</url>
-        </repository>
-    </distributionManagement>
     <repositories>
         <repository>
             <id>eseasky</id>
@@ -97,4 +85,28 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profileActive>prod</profileActive>
+            </properties>
+        </profile>
+    </profiles>
 </project>

@@ -26,7 +26,7 @@
         <sharding-sphere.version>3.0.0.M1</sharding-sphere.version>
         <fastjson.version>1.2.39</fastjson.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <spring-shiro.versio>1.4.0</spring-shiro.versio>
+        <spring-shiro.versio>1.7.0</spring-shiro.versio>
         <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
         <google.guava>26.0-jre</google.guava>
 
